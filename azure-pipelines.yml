@@ -11,6 +11,6 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'ACRVOLARIS'
-    repository: 'nodemonitor'
+    repository: 'azurepipelinescanaryk8s'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
