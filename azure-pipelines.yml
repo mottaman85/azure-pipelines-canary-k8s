@@ -9,8 +9,11 @@ variables:
 
 steps:
 - task: Docker@2
+  displayName: Build and push image
   inputs:
-    containerRegistry: 'ACRVOLARIS'
-    repository: 'azurepipelinescanaryk8s'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    containerRegistry: acrvolaris.azurecr.io/azurepipelinescanaryk8s:$(Build.BuildId)
+    repository: $(imageName)
+    command: buildAndPush
+    Dockerfile: app/Dockerfile
+    tags: |
+      $(Build.BuildId)
