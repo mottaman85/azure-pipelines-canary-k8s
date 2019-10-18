@@ -5,12 +5,17 @@ pool:
   vmImage: Ubuntu-16.04
 
 variables:
-  imageName: azure-pipelines-canary-k8s
+  imageName: azurepipelinescanaryk8s
 
 steps:
 - task: Docker@2
+  displayName: Build and push image
   inputs:
     containerRegistry: 'ACRVOLARIS'
-    repository: 'azurepipelinescanaryk8s'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    repository: $(imageName)
+    command: buildAndPush
+    Dockerfile: app/Dockerfile
+    tags: |
+      $(Build.BuildId)
+      latest
+        
