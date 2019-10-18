@@ -15,8 +15,8 @@ steps:
     repository: $(imageName)
     command: buildAndPush
     Dockerfile: app/Dockerfile
-    includeLatestTag: true
     tags: |
       $(Build.BuildId)
+      latest
       
     
